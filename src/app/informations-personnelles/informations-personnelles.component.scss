@@ -1,0 +1,31 @@
+.card {
+    width: 50%;
+    align-items: center;
+    margin-top: 5%;
+    border-radius: 5px;
+}
+
+
+.card-img-top {
+    max-width: 500px;
+
+}
+
+.card-body {
+    width: 80%;
+}
+
+#modifyButton {
+    border-radius: 5px;
+    
+}
+
+#titleInfos {
+    font-weight: bold;
+    text-shadow: 1px 1px blue;
+}
+
+.mat-icon {
+    vertical-align: middle;
+    padding-right: 1%;
+}

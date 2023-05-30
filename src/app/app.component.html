@@ -1,0 +1,67 @@
+<div class="row">
+  <div class="col-1">
+    <button
+      (click)="topFunction()"
+      id="myBtn"
+      title="Go to top"
+      class="btn btn-primary"
+    >
+      Haut de page
+    </button>
+  </div>
+</div>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+  <div>
+    <div>
+      <img src="../assets/MNS-logo.png" id="logo" />
+    </div>
+  </div>
+  <div class="container-fluid">
+    <div class="collapse navbar-collapse">
+      <ul class="navbar-nav ms-auto p-3">
+        <li class="nav-item" *ngIf="isConnected()">
+          <div ngbDropdown class="d-inline-block">
+            <button
+              type="button"
+              class="btn btn-primary"
+              id="dropdownBasic1"
+              ngbDropdownToggle
+            >
+              {{ utilisateurConnecte?.prenom }}
+              {{ utilisateurConnecte?.nom }}
+            </button>
+            <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+              <button ngbDropdownItem routerLink="/informationsPersonnelles">
+                Informations personnelles
+              </button>
+              <a
+                ngbDropdownItem
+                style="cursor: pointer"
+                (click)="onDeconnexion()"
+              >
+                <mat-icon>logout</mat-icon>Déconnexion</a
+              >
+            </div>
+          </div>
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            routerLinkActive="active"
+            routerLink="accueil"
+            *ngIf="utilisateurConnecte != null"
+          >
+            Accueil
+          </a>
+        </li>
+        <li class="nav-item" *ngIf="utilisateurConnecte == null">
+          <a class="nav-link" routerLinkActive="active" routerLink="connexion">
+            Connexion
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<router-outlet></router-outlet>
