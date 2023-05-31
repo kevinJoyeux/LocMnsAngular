@@ -21,8 +21,10 @@ import { JwtInterceptor } from './services/jwt.interceptor';
 import { MatMenuModule } from '@angular/material/menu';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { UserDetailsComponent } from './User/user-details/user-details.component';
-import { MaterielComponent } from './materiel-liste/materiel.component';
-import { MaterielDetailsComponent } from './materiel-details/materiel-details.component';
+import { MaterielComponent } from './accueil/Materiel/materiel-liste/materiel.component';
+import { MaterielDetailsComponent } from './accueil/Materiel/materiel-details/materiel-details.component';
+import { CategorieComponent } from './accueil/Materiel/categorie/categorie.component';
+import { AffiliationComponent } from './User/affiliation/affiliation.component';
 
 
 @NgModule({
@@ -31,7 +33,7 @@ import { MaterielDetailsComponent } from './materiel-details/materiel-details.co
     ConnexionComponent,
     AccueilComponent,
     InformationsPersonnellesComponent,
-    UserAccountComponent, UserDetailsComponent, MaterielComponent, MaterielDetailsComponent
+    UserAccountComponent, UserDetailsComponent, MaterielComponent, MaterielDetailsComponent, CategorieComponent, AffiliationComponent
   ],
   imports: [
     BrowserModule,

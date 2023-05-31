@@ -6,6 +6,8 @@ import { utilisateur } from 'src/app/models/utilisateur';
 import { PasswordStrengthValidator } from 'src/app/password-strength.validators';
 import { UtilisateurService } from 'src/app/services/utilisateur.service';
 import { StatutService } from 'src/app/services/statut.service';
+import { generate } from 'rxjs';
+import { ElementRef } from '@angular/core';
 
 @Component({
   selector: 'app-user-details',
@@ -15,6 +17,7 @@ import { StatutService } from 'src/app/services/statut.service';
 export class UserDetailsComponent {
 
   formulaire: FormGroup = this.formBuilder.group({
+    id: [""],
     email: ["", [Validators.email, Validators.required]],
     prenom: ["", [Validators.required, Validators.minLength(3)]],
     nom: ["", [Validators.required, Validators.minLength(3)]],
@@ -22,8 +25,7 @@ export class UserDetailsComponent {
     sexe: ["", Validators.required],
     affiliation: ["", Validators.required],
     statut: ["", Validators.required],
-    password1: ["", Validators.required],
-    password2: ["", Validators.required],
+    motDePasse: ["", Validators.required],
     portable: ["", Validators.required]
   })
 
@@ -33,12 +35,15 @@ export class UserDetailsComponent {
     private hhtp: HttpClient,
     private serviceUtilisateur: UtilisateurService,
     private router: Router,
-    private serviceStatut: StatutService
+    private serviceStatut: StatutService,
+    private Elementref: ElementRef
   ) { }
 
   idUtilisateur: any;
   isCreation: boolean = true;
   listeStatut: any[] = [];
+
+
 
   ngOnInit() {
     this.serviceStatut.getStatuts().subscribe({
@@ -56,7 +61,7 @@ export class UserDetailsComponent {
             .subscribe({
               next: (utilisateur: utilisateur) => {
                 console.log(utilisateur);
-
+                this.formulaire.get("id")?.setValue(utilisateur.id);
                 this.formulaire.get("email")?.setValue(utilisateur.email)
                 this.formulaire.get("prenom")?.setValue(utilisateur.prenom)
                 this.formulaire.get("nom")?.setValue(utilisateur.nom)
@@ -64,23 +69,48 @@ export class UserDetailsComponent {
                 this.formulaire.get("sexe")?.setValue(utilisateur.sexe)
                 this.formulaire.get("affiliation")?.setValue(utilisateur.affiliation)
                 this.formulaire.get("portable")?.setValue(utilisateur.portable)
-                this.formulaire.get("password1")?.setValue(utilisateur.motDePasse)
-                this.formulaire.get("password2")?.setValue(utilisateur.motDePasse)
-                this.formulaire.get("statut")?.setValue(utilisateur.statut.nomStatut)
+                this.formulaire.get("motDePasse")?.setValue(utilisateur.motDePasse)
+                this.formulaire.get("statut")?.setValue(utilisateur.statut)
               }
             });
         }
       });
   }
 
+  compareStatut(statutOption: any, StatutUtilisateur: any) {
+    return StatutUtilisateur != null && StatutUtilisateur.id == statutOption.id;
+  }
+
+  genereMotDePasse() {
+    var chaine = 'abcdefghijknopqrstuvwxyzACDEFGHJKLMNPQRSTUVWXYZ12345679&#!?+-*_';
+    var taille = chaine.length;
+    var mdp = '';
+    for (var i = 0; i < 8; i++) {
+      mdp = mdp + chaine.charAt(Math.floor(Math.random() * taille));
+    }
+    return mdp;
+  }
+
+  Inserer() {
+    const test = this.formulaire.get("motDePasse");
+    const resultat = this.genereMotDePasse();
+    console.log(resultat);
+
+    test?.setValue(resultat);
+  }
+
+  ngAfterViewInit() {
+    const button = this.Elementref.nativeElement.querySelector('button');
+    button.addEventListener('click', () => this.Inserer());
+  }
+
   onSubmit() {
-    console.log("Alors peut etre");
-    var selectElement = this.formulaire.value;
-    console.log(selectElement);
     if (this.formulaire.valid) {
       this.serviceUtilisateur.editionUtilisateur(this.formulaire.value).subscribe(resultat => {
         console.log(resultat);
       })
+      this.router.navigate(['/utilisateurs'])
+
     } else {
       console.log("eh bah non");
     }

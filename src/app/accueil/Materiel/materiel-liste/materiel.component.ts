@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { materiel } from '../models/materiel/materiel';
-import { ConnexionService } from '../services/connexion.service';
-import { MaterielService } from '../services/materiel/materiel.service';
+import { materiel } from '../../../models/materiel/materiel';
+import { ConnexionService } from '../../../services/connexion.service';
+import { MaterielService } from '../../../services/materiel/materiel.service';
 
 @Component({
   selector: 'app-materiel',

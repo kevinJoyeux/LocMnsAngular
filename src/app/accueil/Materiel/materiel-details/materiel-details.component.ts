@@ -2,11 +2,11 @@ import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { MaterielService } from '../services/materiel/materiel.service';
-import { materiel } from '../models/materiel/materiel';
-import { LieuStockageService } from '../services/materiel/lieu-stockage.service';
-import { CategorieService } from '../services/materiel/categorie.service';
-import { ModeleService } from '../services/materiel/modele.service';
+import { MaterielService } from '../../../services/materiel/materiel.service';
+import { materiel } from '../../../models/materiel/materiel';
+import { LieuStockageService } from '../../../services/materiel/lieu-stockage.service';
+import { CategorieService } from '../../../services/materiel/categorie.service';
+import { ModeleService } from '../../../services/materiel/modele.service';
 
 @Component({
   selector: 'app-materiel-details',
@@ -16,6 +16,7 @@ import { ModeleService } from '../services/materiel/modele.service';
 export class MaterielDetailsComponent {
 
   formulaire: FormGroup = this.formBuilder.group({
+    id: [""],
     matricule: ["", [Validators.required]],
     modele: ["", [Validators.required]],
     lieuStockage: ["", Validators.required],
@@ -63,10 +64,11 @@ export class MaterielDetailsComponent {
             .getMateriel(this.idMateriel)
             .subscribe({
               next: (materiel: materiel) => {
+                this.formulaire.get("id")?.setValue(materiel.id);
                 this.formulaire.get("matricule")?.setValue(materiel.matricule)
-                this.formulaire.get("modele")?.setValue(materiel.modele.nom)
-                this.formulaire.get("lieuStockage")?.setValue(materiel.lieuStockage.lieuStockage)
-                this.formulaire.get("categorie")?.setValue(materiel.categorie.nomCategorie)
+                this.formulaire.get("modele")?.setValue(materiel.modele)
+                this.formulaire.get("lieuStockage")?.setValue(materiel.lieuStockage)
+                this.formulaire.get("categorie")?.setValue(materiel.categorie)
               },
               error: erreurRequete => {
                 if (erreurRequete.status === 404) {
@@ -80,22 +82,31 @@ export class MaterielDetailsComponent {
         }
       });
   }
+  compareModele(ModeleOption: any, ModeleUtilisateur: any) {
+    return ModeleUtilisateur != null && ModeleUtilisateur.id == ModeleOption.id;
+  }
+  compareCategorie(CategorieOption: any, CategorieUtilisateur: any) {
+    return CategorieUtilisateur != null && CategorieUtilisateur.id == CategorieOption.id;
+  }
+  compareLieuStockage(LieuStockageOption: any, LieuStockageUtilisateur: any) {
+    return LieuStockageUtilisateur != null && LieuStockageUtilisateur.id == LieuStockageOption.id;
+  }
 
 
 
   // checker si dans onSubmit il faut mettre ajoutMateriel ou updateMateriel (+ si jamais il faut faire le updateMateriel dans SPRING)
 
   onSubmit() {
+    console.log(this.formulaire.value);
+
     if (this.formulaire.valid) {
-      const formData = new FormData();
-      const materiel: materiel = this.formulaire.value;
-      materiel.id = this.idMateriel;
+      this.serviceMateriel.ajoutMateriel(this.formulaire.value).subscribe(resultat => {
+        console.log(resultat);
+      })
+      this.router.navigate(['/materiels'])
+    } else {
+      console.log("eh bah non");
 
-      formData.append('materiel', new Blob([JSON.stringify(materiel)], {
-        type: 'application/json',
-      }));
-
-      this.serviceMateriel.ajoutMateriel(formData).subscribe(resultat => this.router.navigateByUrl("accueil"))
     }
   }
 }
