@@ -1,0 +1,40 @@
+<div class="container">
+  <div class="card mx-auto">
+    <h5 class="card-title p-4" id="titleInfos">Informations personnelles</h5>
+    <img class="card-img-top"
+      src="https://cdn.futura-sciences.com/buildsv6/images/largeoriginal/a/c/c/acc90c264f_96682_icann-internet-nom-domaine.jpg"
+      alt="Card image cap" />
+    <div class="card-body">
+      <ul>
+        <li>
+          <h6>Nom : {{ user.nom }}</h6>
+        </li>
+        <li>
+          <h6>Prénom : {{ user.prenom }}</h6>
+        </li>
+        <li>
+          <h6>Email : {{ user.email }}</h6>
+        </li>
+        <li>
+          <h6>Login : {{ user.login }}</h6>
+        </li>
+        <li>
+          <h6>Statut : {{ user.statut.nomStatut }}</h6>
+        </li>
+
+        <li>
+          <h6>Sexe : {{ user.sexe }}</h6>
+        </li>
+        <li>
+          <h6>Affiliation : {{ user.affiliation }}</h6>
+        </li>
+        <li>
+          <h6>Numéro de téléphone : {{ user.portable }}</h6>
+        </li>
+      </ul>
+      <a routerLink="/informationsPersonnelles/details/{{user.id}}" class="btn btn-primary btn-block offset-9 col-3"
+        id="modifyButton">
+        <mat-icon fontIcon="edit"></mat-icon>Modifier</a>
+    </div>
+  </div>
+</div>

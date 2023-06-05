@@ -10,19 +10,19 @@ export class ModeleService {
   public _modele: BehaviorSubject<any> = new BehaviorSubject<any>([]);
 
   constructor(private http: HttpClient) { }
-  public getmodeles(): Observable<any> {
+  public getModeles(): Observable<any> {
     return this.http.get<modele>('http://localhost:8080/modeles');
   }
 
-  public deletemodele(id: number): Observable<any> {
+  public deleteModele(id: number): Observable<any> {
     return this.http.delete("http://localhost:8080/modele/" + id);
   }
 
-  public editionmodele(modele: any): Observable<any> {
+  public editionModele(modele: any): Observable<any> {
     return this.http.post("http://localhost:8080/modele", modele);
   }
 
-  public getmodele(id: number): Observable<any> {
+  public getModele(id: number): Observable<any> {
     return this.http.get("http://localhost:8080/modele/" + id);
   }
 }

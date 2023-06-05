@@ -1,0 +1,64 @@
+<div class="container" [ngSwitch]="codeRetour">
+  <h1> {{isCreation ? "Ajout matériel" : "Modification matériel" }}</h1>
+  <a routerLink="/categorie/nouveau" class="btn btn-primary offset-3 col-2" id="ajoutButtonCategorie">
+    <mat-icon>add</mat-icon>
+    Ajout Catégorie
+  </a>
+  <a routerLink="/modele/nouveau" class="btn btn-primary offset-3 col-2" id="ajoutButtonModele">
+    <mat-icon>add</mat-icon>
+    Ajout Modèle
+  </a>
+  <a routerLink="/lieustockage/nouveau" class="btn btn-primary offset-3 col-2" id="ajoutButtonLieuStockage">
+    <mat-icon>add</mat-icon>
+    Ajout LieuStockage
+  </a>
+  <form class="p-5 ng-valid ng-dirty ng-touched" (ngSubmit)="onSubmit()" [formGroup]="formulaire">
+    <div class="form-group row pt-4">
+
+      <label for="matricule" class="col-md-2 col-form-label">Matricule</label>
+      <div class="col-md-4">
+        <input type="text" formControlName="matricule" id="matricule" placeholder="Matricule"
+          class="form-control ng-untouched ng-pristine ng-valid" required />
+      </div>
+
+      <label for="modele" class="col-md-2 col-form-label">Modèle</label>
+      <div class="col-md-4">
+        <select id="modele" class="form-control ng-untouched ng-pristine ng-valid" required formControlName="modele"
+          [compareWith]="compareModele">
+          <option *ngFor="let modele of listeModele" [ngValue]="modele">
+            {{modele.nom}}
+          </option>
+        </select>
+      </div>
+
+    </div>
+
+    <div class="form-group row pt-4">
+      <label for="lieuStockage" class="col-md-2 col-form-label">Lieu de stockage</label>
+      <div class="col-md-4">
+        <select id="lieuStockage" class="form-control ng-untouched ng-pristine ng-valid" required
+          formControlName="lieuStockage" [compareWith]="compareLieuStockage">
+          <option *ngFor="let lieuStockage of listeLieuStockage" [ngValue]="lieuStockage">
+            {{lieuStockage.lieuStockage}}
+          </option>
+        </select>
+      </div>
+      <label for="categorie" class="col-md-2 col-form-label">Catégorie</label>
+      <div class="col-md-4">
+        <select id="categorie" class="form-control ng-untouched ng-pristine ng-valid" required
+          formControlName="categorie" [compareWith]="compareCategorie">
+          <option *ngFor="let categorie of listeCategorie" [ngValue]="categorie">
+            {{categorie.nomCategorie}}
+          </option>
+        </select>
+      </div>
+    </div>
+
+    <div class="action-buttons d-flex justify-content-end pt-5">
+      <a routerLink="/materiels" class="m-1 btn btn-outline-primary btn-block">Retour</a>
+      <button type="submit" class="m-1 btn btn-primary btn-block">
+        Sauvegarder
+      </button>
+    </div>
+  </form>
+</div>

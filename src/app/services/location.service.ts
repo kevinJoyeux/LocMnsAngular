@@ -25,4 +25,22 @@ export class LocationService {
   public getlocation(id: number): Observable<any> {
     return this.http.get("http://localhost:8080/location/" + id);
   }
+  public getLocationValidee() {
+    this.http.get('http://localhost:8080/locationvalidee').subscribe((location: any) => this._location.next(location));
+  }
+  public getLocationAttente() {
+    this.http.get('http://localhost:8080/locationattente').subscribe((location: any) => this._location.next(location));
+  }
+  public getLocationOrderByDateDebutLocationPrevue() {
+    this.http.get('http://localhost:8080/locationDateDebutPrevue').subscribe((location: any) => this._location.next(location));
+  }
+  public getLocationOrderByDateFinLocationPrevue() {
+    this.http.get('http://localhost:8080/locationDateFinPrevue').subscribe((location: any) => this._location.next(location));
+  }
+  public getLocationOrderByDateProlongation() {
+    this.http.get('http://localhost:8080/locationDateProlongation').subscribe((location: any) => this._location.next(location));
+  }
+  public getLocationOrderByDateDecision() {
+    this.http.get('http://localhost:8080/locationDateDecision').subscribe((location: any) => this._location.next(location));
+  }
 }

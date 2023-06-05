@@ -1,0 +1,34 @@
+<div class="container" [ngSwitch]="codeRetour">
+    <h1> {{isCreation ? "Ajout location" : "Modification location" }}</h1>
+    <form class="p-5 ng-valid ng-dirty ng-touched" (ngSubmit)="onSubmit()" [formGroup]="formulaire">
+        <div class="form-group row pt-4">
+
+            <label for="date" class="col-md-2 col-form-label">Date de début</label>
+            <div class="col-md-4">
+
+                <input type="date" formControlName="dateDebutLocationPrevue" id="dateDebutLocationPrevue"
+                    placeholder="dateDebutLocationPrevue" class="form-control ng-untouched ng-pristine ng-valid"
+                    required />
+            </div>
+            <label for="date" class="col-md-2 col-form-label">Date de fin</label>
+            <div class="col-md-4">
+
+                <input type="date" formControlName="dateFinLocationPrevue" id="dateFinLocationPrevue"
+                    placeholder="dateFinLocationPrevue" class="form-control ng-untouched ng-pristine ng-valid"
+                    required />
+            </div>
+            <label for="raisonlocation" class="col-md-2 col-form-label">Raison de la location</label>
+            <div class="col-md-4">
+                <input type="text" formControlName="raisonLocation" id="raisonLocation" placeholder="Pourquoi"
+                    class="form-control ng-untouched ng-pristine ng-valid" required />
+            </div>
+        </div>
+
+        <div class="action-buttons d-flex justify-content-end pt-5">
+            <a routerLink="/materiels" class="m-1 btn btn-outline-primary btn-block">Retour</a>
+            <button type="submit" class="m-1 btn btn-primary btn-block">
+                Sauvegarder
+            </button>
+        </div>
+    </form>
+</div>

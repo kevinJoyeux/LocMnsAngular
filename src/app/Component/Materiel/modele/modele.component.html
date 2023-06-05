@@ -1,0 +1,37 @@
+<html>
+
+<body>
+    <div class="container">
+        <a routerLink="/marque/nouveau" class="btn btn-primary offset-3 col-2" id="ajoutButtonCategorie">
+            <mat-icon>add</mat-icon>
+            Ajout Marque
+        </a>
+        <form class="p-5 ng-valid ng-dirty ng-touched" (ngSubmit)="onSubmit()" id="formulaire" [formGroup]="formulaire">
+            <div class="form-group row pt-4">
+                <label for="nom" class="col-md-2 col-form-label">Nom du modèle</label>
+                <div class="col-md-4">
+                    <input type="text" formControlName="nom" id="nom" placeholder="nom"
+                        class="form-control ng-untouched ng-pristine ng-valid" required minlength="3" />
+                </div>
+
+                <label for="marque" class="col-md-2 col-form-label">Marque</label>
+                <div class="col-md-4">
+                    <select id="marque" class="form-control ng-untouched ng-pristine ng-valid" required
+                        formControlName="marque" [compareWith]="compareMarque">
+                        <option *ngFor="let marque of listeMarque" [ngValue]="marque">
+                            {{marque.nomMarque}}
+                        </option>
+                    </select>
+                </div>
+                <div class="action-buttons d-flex justify-content-end pt-5">
+                    <a routerLink="/materiels" class="m-1 btn btn-outline-primary btn-block">Retour</a>
+                    <button class="m-1 btn btn-primary btn-block">
+                        Sauvegarder
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+</body>
+
+</html>

@@ -27,4 +27,14 @@ export class MaterielService {
   public deleteMateriel(id: number): Observable<any> {
     return this.http.delete('http://localhost:8080/materiel/' + id);
   }
+
+  public getMaterielRecherche(texte: string) {
+    if (texte != "") {
+      this.http.get("http://localhost:8080/materielRecherche/" + texte)
+        .subscribe((materiel: any) => this._materiels.next(materiel));
+    } else {
+      this.http.get('http://localhost:8080/materiels')
+        .subscribe((materiel: any) => this._materiels.next(materiel));
+    }
+  }
 }

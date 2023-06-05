@@ -3,10 +3,10 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { AccueilComponent } from './accueil/accueil.component';
-import { ConnexionComponent } from './connexion/connexion.component';
-import { InformationsPersonnellesComponent } from './informations-personnelles/informations-personnelles.component';
-import { UserAccountComponent } from './User/user-account/user-account.component';
+import { AccueilComponent } from './Component/accueil/accueil.component';
+import { ConnexionComponent } from './Component/connexion/connexion.component';
+import { InformationsPersonnellesComponent } from './Component/informations-personnelles/informations-personnelles.component';
+import { UserAccountComponent } from './Component/User/user-account/user-account.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
@@ -20,11 +20,18 @@ import { MatSelectModule } from '@angular/material/select';
 import { JwtInterceptor } from './services/jwt.interceptor';
 import { MatMenuModule } from '@angular/material/menu';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { UserDetailsComponent } from './User/user-details/user-details.component';
-import { MaterielComponent } from './accueil/Materiel/materiel-liste/materiel.component';
-import { MaterielDetailsComponent } from './accueil/Materiel/materiel-details/materiel-details.component';
-import { CategorieComponent } from './accueil/Materiel/categorie/categorie.component';
-import { AffiliationComponent } from './User/affiliation/affiliation.component';
+import { UserDetailsComponent } from './Component/User/user-details/user-details.component';
+import { MaterielComponent } from './Component/Materiel/materiel-liste/materiel.component';
+import { MaterielDetailsComponent } from './Component/Materiel/materiel-details/materiel-details.component';
+import { CategorieComponent } from './Component/Materiel/categorie/categorie.component';
+import { AffiliationComponent } from './Component/User/affiliation/affiliation.component';
+import { MarqueComponent } from './Component/Materiel/marque/marque.component';
+import { ModeleComponent } from './Component/Materiel/modele/modele.component';
+import { LieuStockageComponent } from './Component/Materiel/lieu-stockage/lieu-stockage.component';
+import { LocationEnAttenteComponent } from './Component/Location/location-en-attente/location-en-attente.component';
+import { LocationValideeComponent } from './Component/Location/location-validee/location-validee.component';
+import { LocationDetailsComponent } from './Component/Location/location-details/location-details.component';
+import { InformationsPersonnellesDetailsComponent } from './Component/informations-personnelles-details/informations-personnelles-details.component';
 
 
 @NgModule({
@@ -33,7 +40,19 @@ import { AffiliationComponent } from './User/affiliation/affiliation.component';
     ConnexionComponent,
     AccueilComponent,
     InformationsPersonnellesComponent,
-    UserAccountComponent, UserDetailsComponent, MaterielComponent, MaterielDetailsComponent, CategorieComponent, AffiliationComponent
+    UserAccountComponent,
+    UserDetailsComponent,
+    MaterielComponent,
+    MaterielDetailsComponent,
+    CategorieComponent,
+    AffiliationComponent,
+    MarqueComponent,
+    ModeleComponent,
+    LieuStockageComponent,
+    LocationEnAttenteComponent,
+    LocationValideeComponent,
+    LocationDetailsComponent,
+    InformationsPersonnellesDetailsComponent
   ],
   imports: [
     BrowserModule,

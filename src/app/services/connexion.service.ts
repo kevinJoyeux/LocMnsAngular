@@ -36,6 +36,7 @@ export class ConnexionService {
       const json = window.atob(data);
       console.log(donneesUtilisateur);
       const utilisateur: utilisateur = {
+        id: donneesUtilisateur.utilisateur.id,
         email: donneesUtilisateur.utilisateur.email,
         nom: donneesUtilisateur.utilisateur.nom,
         prenom: donneesUtilisateur.utilisateur.prenom,
