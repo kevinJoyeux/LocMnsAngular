@@ -10,5 +10,5 @@ RUN npm run build
 # Étape 2, basée sur Nginx pour avoir uniquement le contenu compilé pour servir avec Nginx
 
 FROM nginx:1.17.1-alpine
-COPY --from=build /app/dist/locmnskevin /usr/share/nginx/html
+COPY --from=build /app/dist/project /usr/share/nginx/html
 COPY ./nginx-custom.conf /etc/nginx/conf.d/default.conf
