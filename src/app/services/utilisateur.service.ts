@@ -53,5 +53,11 @@ export class UtilisateurService {
         .subscribe((utilisateurs: any) => this._utilisateurs.next(utilisateurs));
     }
   }
+  public getUtilisateursByPrenomAndNom(prenom: string, nom: string): Observable<utilisateur[]> {
+    return this.http.get<utilisateur[]>('http://localhost:8080/utilisateur/' + prenom + "/" + nom);
+  }
+  public getUtilisateursByEmail(email: string): Observable<utilisateur[]> {
+    return this.http.get<utilisateur[]>('http://localhost:8080/utilisateuremail/' + email);
+  }
 
 }

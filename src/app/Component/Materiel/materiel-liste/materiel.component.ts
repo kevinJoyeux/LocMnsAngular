@@ -14,7 +14,7 @@ export class MaterielComponent {
   isAdmin: boolean = false;
   recherche: string = "";
 
-  constructor(private connexionService: ConnexionService, private serviceMateriel: MaterielService) {
+  constructor(public connexionService: ConnexionService, private serviceMateriel: MaterielService) {
 
   }
 
@@ -24,13 +24,11 @@ export class MaterielComponent {
   }
 
   rafraichir() {
-    if (this.connexionService.isAdmin) {
-      this.serviceMateriel.getMateriels();
-      this.serviceMateriel._materiels.subscribe(
-        materiels => {
-          this.listeMateriel = materiels;
-        })
-    }
+    this.serviceMateriel.getMateriels();
+    this.serviceMateriel._materiels.subscribe(
+      materiels => {
+        this.listeMateriel = materiels;
+      })
   }
   Recherche() {
     this.serviceMateriel.getMaterielRecherche(this.recherche);

@@ -17,7 +17,9 @@ export class InformationsPersonnellesComponent {
   constructor(private connexionService: ConnexionService, private serviceUtilisateur: UtilisateurService) { }
 
   ngOnInit() {
-
+    this.rafraichir();
+  }
+  rafraichir() {
     this.connexionService._utilisateurConnecte.subscribe(
       (utilisateur) => (this.user = utilisateur)
     );

@@ -8,6 +8,7 @@ import { location } from '../models/location';
 })
 export class LocationService {
   public _location: BehaviorSubject<any> = new BehaviorSubject<any>([]);
+  public _utilisateurs: BehaviorSubject<any> = new BehaviorSubject<any>([]);
 
   constructor(private http: HttpClient) { }
   public getlocations(): Observable<any> {
@@ -43,4 +44,21 @@ export class LocationService {
   public getLocationOrderByDateDecision() {
     this.http.get('http://localhost:8080/locationDateDecision').subscribe((location: any) => this._location.next(location));
   }
+  public getlocationUtilisateur() {
+    this.http.get('http://localhost:8080/utilisateurs')
+      .subscribe((utilisateurs: any) => this._utilisateurs.next(utilisateurs));
+  }
+  public LocationValide(id: number | undefined): Observable<any> {
+    return this.http.get('http://localhost:8080/locationvalide/' + id);
+  }
+  public LocationRefusee(id: number | undefined): Observable<any> {
+    return this.http.get('http://localhost:8080/locationrefusee/' + id);
+  }
+  public LocationUtilisateurtrue(id: number | undefined) {
+    this.http.get('http://localhost:8080/locationutilisateurtrue/' + id).subscribe((location: any) => this._location.next(location));
+  }
+  public LocationUtilisateurfalse(id: number | undefined) {
+    this.http.get('http://localhost:8080/locationutilisateurfalse/' + id).subscribe((location: any) => this._location.next(location));
+  }
 }
+

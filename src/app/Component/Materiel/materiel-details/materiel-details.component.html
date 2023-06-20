@@ -1,14 +1,17 @@
 <div class="container" [ngSwitch]="codeRetour">
   <h1> {{isCreation ? "Ajout matériel" : "Modification matériel" }}</h1>
-  <a routerLink="/categorie/nouveau" class="btn btn-primary offset-3 col-2" id="ajoutButtonCategorie">
+  <a routerLink="/categorie/nouveau" class="btn btn-primary offset-3 col-2" id="ajoutButtonCategorie"
+    *ngIf="this.connexionService.isAdmin">
     <mat-icon>add</mat-icon>
     Ajout Catégorie
   </a>
-  <a routerLink="/modele/nouveau" class="btn btn-primary offset-3 col-2" id="ajoutButtonModele">
+  <a routerLink="/modele/nouveau" class="btn btn-primary offset-3 col-2" id="ajoutButtonModele"
+    *ngIf="this.connexionService.isAdmin">
     <mat-icon>add</mat-icon>
     Ajout Modèle
   </a>
-  <a routerLink="/lieustockage/nouveau" class="btn btn-primary offset-3 col-2" id="ajoutButtonLieuStockage">
+  <a routerLink="/lieustockage/nouveau" class="btn btn-primary offset-3 col-2" id="ajoutButtonLieuStockage"
+    *ngIf="this.connexionService.isAdmin">
     <mat-icon>add</mat-icon>
     Ajout LieuStockage
   </a>
@@ -56,7 +59,7 @@
 
     <div class="action-buttons d-flex justify-content-end pt-5">
       <a routerLink="/materiels" class="m-1 btn btn-outline-primary btn-block">Retour</a>
-      <button type="submit" class="m-1 btn btn-primary btn-block">
+      <button type="submit" class="m-1 btn btn-primary btn-block" *ngIf="this.connexionService.isAdmin">
         Sauvegarder
       </button>
     </div>

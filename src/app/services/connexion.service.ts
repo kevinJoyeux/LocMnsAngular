@@ -11,6 +11,7 @@ import jwt_decode from 'jwt-decode';
 export class ConnexionService {
 
   isAdmin: boolean = false;
+  id: number | undefined = 0;
 
   public _utilisateurConnecte: BehaviorSubject<utilisateur | null> =
     new BehaviorSubject<utilisateur | null>(null);
@@ -34,7 +35,6 @@ export class ConnexionService {
       const donneesUtilisateur: any = jwt_decode(jwt);
       const data = jwt.split('.')[1];
       const json = window.atob(data);
-      console.log(donneesUtilisateur);
       const utilisateur: utilisateur = {
         id: donneesUtilisateur.utilisateur.id,
         email: donneesUtilisateur.utilisateur.email,
@@ -48,11 +48,12 @@ export class ConnexionService {
         motDePasse: donneesUtilisateur.utilisateur.motDePasse,
       };
       this.isAdmin = utilisateur?.statut.nomStatut == "administrateur"
+      this.id = utilisateur.id;
+
       this._utilisateurConnecte.next(utilisateur);
     } else {
       this._utilisateurConnecte.next(null);
     }
-    console.log(this._utilisateurConnecte.getValue());
 
   }
 

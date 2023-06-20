@@ -7,6 +7,7 @@ import { materiel } from '../../../models/materiel/materiel';
 import { LieuStockageService } from '../../../services/materiel/lieu-stockage.service';
 import { CategorieService } from '../../../services/materiel/categorie.service';
 import { ModeleService } from '../../../services/materiel/modele.service';
+import { ConnexionService } from 'src/app/services/connexion.service';
 
 @Component({
   selector: 'app-materiel-details',
@@ -25,6 +26,7 @@ export class MaterielDetailsComponent {
 
   constructor(
     private formBuilder: FormBuilder,
+    public connexionService: ConnexionService,
     private http: HttpClient,
     private router: Router,
     private route: ActivatedRoute,
@@ -93,9 +95,6 @@ export class MaterielDetailsComponent {
     return LieuStockageMateriel != null && LieuStockageMateriel.id == LieuStockageOption.id;
   }
 
-
-
-  // checker si dans onSubmit il faut mettre ajoutMateriel ou updateMateriel (+ si jamais il faut faire le updateMateriel dans SPRING)
 
   onSubmit() {
     console.log(this.formulaire.value);

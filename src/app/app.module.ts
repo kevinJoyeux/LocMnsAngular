@@ -4,7 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AccueilComponent } from './Component/accueil/accueil.component';
-import { ConnexionComponent } from './Component/connexion/connexion.component';
+import { ConnexionComponent } from './Component/Login/connexion/connexion.component';
 import { InformationsPersonnellesComponent } from './Component/informations-personnelles/informations-personnelles.component';
 import { UserAccountComponent } from './Component/User/user-account/user-account.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -32,6 +32,9 @@ import { LocationEnAttenteComponent } from './Component/Location/location-en-att
 import { LocationValideeComponent } from './Component/Location/location-validee/location-validee.component';
 import { LocationDetailsComponent } from './Component/Location/location-details/location-details.component';
 import { InformationsPersonnellesDetailsComponent } from './Component/informations-personnelles-details/informations-personnelles-details.component';
+import { DemandeLocationComponent } from './Component/Location/demande-location/demande-location.component';
+import { MdpOublieComponent } from './Component/Login/mdp-oublie/mdp-oublie.component';
+
 
 
 @NgModule({
@@ -52,7 +55,9 @@ import { InformationsPersonnellesDetailsComponent } from './Component/informatio
     LocationEnAttenteComponent,
     LocationValideeComponent,
     LocationDetailsComponent,
-    InformationsPersonnellesDetailsComponent
+    InformationsPersonnellesDetailsComponent,
+    DemandeLocationComponent,
+    MdpOublieComponent
   ],
   imports: [
     BrowserModule,

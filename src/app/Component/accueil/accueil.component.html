@@ -1,40 +1,32 @@
 <div class="container">
-  <div>
-    <button type="button" class="btn btn-primary offset-1 col-4" [routerLink]="['/utilisateurs']">
+  <div class="d-flex justify-content-center align-items-center">
+    <button type="button" class="btn btn-primary offset-1 col-4" [routerLink]="['/utilisateurs']"
+      *ngIf="this.connexionService.isAdmin">
       <mat-icon>person_add</mat-icon>
       Compte utilisateur
     </button>
+
     <button type="button" class="btn btn-primary offset-1 col-4" [routerLink]="['/materiels']">
       <mat-icon>add_to_photos</mat-icon>
       Matériel
     </button>
   </div>
-  <div>
+  <div class="d-flex justify-content-center align-items-center">
     <button type="button" class="btn btn-primary offset-1 col-4" routerLink="/location-attente">
       <mat-icon>pending</mat-icon>
-      Validation
+      En attente de validation
     </button>
     <button type="button" class="btn btn-primary offset-1 col-4" routerLink="/location-validee">
       <mat-icon>done_all</mat-icon>
       Location en cours
     </button>
   </div>
-  <div>
-    <button type="button" class="btn btn-primary offset-1 col-4" [routerLink]="['/connexion']">
+  <div class="d-flex justify-content-center align-items-center">
+    <button type="button" class="btn btn-primary offset-1 col-4" routerLink="/location/nouveau">
       <mat-icon>book_online</mat-icon>
       Réservation
     </button>
 
-    <button type="button" class="btn btn-primary offset-1 col-4" [routerLink]="['/connexion']">
-      <mat-icon>calendar_month</mat-icon>
-      Planning
-    </button>
-  </div>
-  <div>
-    <button type="button" class="btn btn-primary offset-1 col-4" [routerLink]="['/connexion']">
-      <mat-icon>category</mat-icon>
-      Catégories
-    </button>
     <button type="button" class="btn btn-primary offset-1 col-4" [routerLink]="['/informationsPersonnelles']">
       <mat-icon>settings_accessibility</mat-icon>
       Mes informations

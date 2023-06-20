@@ -1,5 +1,7 @@
+import { utilisateur } from "./utilisateur";
+
 export interface location {
-    id?: number;
+    id: number;
     raisonLocation: string;
     decision: string;
     dateDemandeLocation: Date;
@@ -9,4 +11,5 @@ export interface location {
     dateValidationProlongation: Date;
     dateLocationEtat: Date;
     dateDecision: Date;
+    utilisateur: utilisateur;
 }

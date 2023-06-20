@@ -1,0 +1,52 @@
+<div class="container" [ngSwitch]="codeRetour">
+    <h1> Demande de Réservation</h1>
+    <form class="p-5 ng-valid ng-dirty ng-touched" (ngSubmit)="onSubmit()" [formGroup]="formulaire">
+        <div class="form-group row pt-4">
+            <label for="firstName" class="col-md-2 col-form-label">Prénom</label>
+            <div class="col-md-4">
+                <input type="text" formControlName="prenom" id="prenom" placeholder="Prénom"
+                    class="form-control ng-untouched ng-pristine ng-valid" required minlength="3" />
+            </div>
+            <label for="lastName" class="col-md-2 col-form-label">Nom</label>
+            <div class="col-md-4">
+                <input type="text" formControlName="nom" id="nom" placeholder="Nom"
+                    class="form-control ng-untouched ng-pristine ng-valid" required minlength="3" />
+            </div>
+
+            <label for="date" class="col-md-2 col-form-label">Date de début souhaité</label>
+            <div class="col-md-4">
+                <input type="date" formControlName="dateDebutLocationPrevue" id="dateDebutLocationPrevue"
+                    placeholder="dateDebutLocationPrevue" class="form-control ng-untouched ng-pristine ng-valid"
+                    required />
+            </div>
+            <label for="date" class="col-md-2 col-form-label">Date de fin souhaité</label>
+            <div class="col-md-4">
+
+                <input type="date" formControlName="dateFinLocationPrevue" id="dateFinLocationPrevue"
+                    placeholder="dateFinLocationPrevue" class="form-control ng-untouched ng-pristine ng-valid"
+                    required />
+            </div>
+            <label for="raisonlocation" class="col-md-2 col-form-label">Raison de la location</label>
+            <div class="col-md-4">
+                <input type="text" formControlName="raisonLocation" id="raisonLocation" placeholder="raison"
+                    class="form-control ng-untouched ng-pristine ng-valid" required />
+            </div>
+            <label for="categorie" class="col-md-2 col-form-label">Quelle catégorie ?</label>
+            <div class="col-md-4">
+                <select id="categorie" class="form-control ng-untouched ng-pristine ng-valid" required
+                    formControlName="categorie" [compareWith]="compareCategorie">
+                    <option *ngFor="let categorie of listeCategorie" [ngValue]="categorie">
+                        {{categorie.nomCategorie}}
+                    </option>
+                </select>
+            </div>
+        </div>
+
+        <div class="action-buttons d-flex justify-content-end pt-5">
+            <a routerLink="/accueil" class="m-1 btn btn-outline-primary btn-block">Retour</a>
+            <button type="submit" class="m-1 btn btn-primary btn-block">
+                Faire une demande
+            </button>
+        </div>
+    </form>
+</div>

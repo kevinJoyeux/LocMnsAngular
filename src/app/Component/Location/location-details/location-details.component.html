@@ -8,27 +8,37 @@
 
                 <input type="date" formControlName="dateDebutLocationPrevue" id="dateDebutLocationPrevue"
                     placeholder="dateDebutLocationPrevue" class="form-control ng-untouched ng-pristine ng-valid"
-                    required />
+                    required [readOnly]="!this.connexionService.isAdmin" />
             </div>
             <label for="date" class="col-md-2 col-form-label">Date de fin</label>
             <div class="col-md-4">
 
                 <input type="date" formControlName="dateFinLocationPrevue" id="dateFinLocationPrevue"
-                    placeholder="dateFinLocationPrevue" class="form-control ng-untouched ng-pristine ng-valid"
-                    required />
+                    placeholder="dateFinLocationPrevue" class="form-control ng-untouched ng-pristine ng-valid" required
+                    readonly [readOnly]="!this.connexionService.isAdmin" />
             </div>
-            <label for="raisonlocation" class="col-md-2 col-form-label">Raison de la location</label>
+            <label for="raisonlocation" class="col-md-2 col-form-label">Détails de la location</label>
             <div class="col-md-4">
-                <input type="text" formControlName="raisonLocation" id="raisonLocation" placeholder="Pourquoi"
-                    class="form-control ng-untouched ng-pristine ng-valid" required />
+                <input type="text" formControlName="raisonLocation" id="raisonLocation" placeholder="Détails"
+                    class="form-control ng-untouched ng-pristine ng-valid" required
+                    [readOnly]="!this.connexionService.isAdmin" />
             </div>
-        </div>
+            <label for="categorie" class="col-md-2 col-form-label">Quelle catégorie ?</label>
+            <div class="col-md-4">
+                <select id="categorie" class="form-control ng-untouched ng-pristine ng-valid" required
+                    formControlName="categorie" [compareWith]="compareCategorie">
+                    <option *ngFor="let categorie of listeCategorie" [ngValue]="categorie">
+                        {{categorie.nomCategorie}}
+                    </option>
+                </select>
+            </div>
 
-        <div class="action-buttons d-flex justify-content-end pt-5">
-            <a routerLink="/materiels" class="m-1 btn btn-outline-primary btn-block">Retour</a>
-            <button type="submit" class="m-1 btn btn-primary btn-block">
-                Sauvegarder
-            </button>
+            <div class="action-buttons d-flex justify-content-end pt-5">
+                <a routerLink="/materiels" class="m-1 btn btn-outline-primary btn-block">Retour</a>
+                <button type="submit" class="m-1 btn btn-primary btn-block">
+                    Sauvegarder
+                </button>
+            </div>
         </div>
     </form>
 </div>

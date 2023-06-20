@@ -1,4 +1,4 @@
 export interface lieuStockage {
-    id?: number;
-    lieuStockage : string;
+    id?: number,
+    lieuStockage: String;
 }

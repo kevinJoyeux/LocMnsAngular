@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ConnexionComponent } from './Component/connexion/connexion.component';
+import { ConnexionComponent } from './Component/Login/connexion/connexion.component';
 import { AccueilComponent } from './Component/accueil/accueil.component';
 import { InformationsPersonnellesComponent } from './Component/informations-personnelles/informations-personnelles.component';
 import { UserAccountComponent } from './Component/User/user-account/user-account.component';
@@ -15,6 +15,8 @@ import { LocationEnAttenteComponent } from './Component/Location/location-en-att
 import { LocationValideeComponent } from './Component/Location/location-validee/location-validee.component';
 import { LocationDetailsComponent } from './Component/Location/location-details/location-details.component';
 import { InformationsPersonnellesDetailsComponent } from './Component/informations-personnelles-details/informations-personnelles-details.component';
+import { DemandeLocationComponent } from './Component/Location/demande-location/demande-location.component';
+import { MdpOublieComponent } from './Component/Login/mdp-oublie/mdp-oublie.component';
 
 const routes: Routes = [
   { path: 'connexion', component: ConnexionComponent },
@@ -32,7 +34,9 @@ const routes: Routes = [
   { path: 'lieustockage/:id', component: LieuStockageComponent },
   { path: 'location-attente', component: LocationEnAttenteComponent },
   { path: 'location-validee', component: LocationValideeComponent },
-  { path: 'location/details/:id', component: LocationDetailsComponent }
+  { path: 'location/details/:id', component: LocationDetailsComponent },
+  { path: 'location/nouveau', component: DemandeLocationComponent },
+  { path: 'mdpOublie', component: MdpOublieComponent }
 ];
 
 @NgModule({

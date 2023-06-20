@@ -8,7 +8,8 @@
         <button (click)="Recherche()" class="btn btn-primary col-2" type="submit" value="Search">
           Chercher
         </button>
-        <a routerLink="/materiel/details/nouveau" class="btn btn-primary offset-3 col-2" id="ajoutButton">
+        <a routerLink="/materiel/details/nouveau" class="btn btn-primary offset-3 col-2" id="ajoutButton"
+          *ngIf="this.connexionService.isAdmin">
           <mat-icon>add</mat-icon>
           Ajout matériel
         </a>
@@ -37,9 +38,10 @@
               <td>{{ materiel.categorie.nomCategorie }}</td>
               <td>
                 <a routerLink="/materiel/details/{{materiel.id}}" class="btn btn-outline-primary p-1 mx-1">
-                  Modifier
+                  {{this.connexionService.isAdmin? "Modifier" : "Regarder"}}
                 </a>
-                <button (click)="onDeleteMateriel(materiel.id)" class="btn btn-outline-danger p-1 mx-1">
+                <button (click)="onDeleteMateriel(materiel.id)" class="btn btn-outline-danger p-1 mx-1"
+                  *ngIf="this.connexionService.isAdmin">
                   Supprimer
                 </button>
               </td>

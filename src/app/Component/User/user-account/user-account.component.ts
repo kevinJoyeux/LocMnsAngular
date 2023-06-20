@@ -14,7 +14,7 @@ export class UserAccountComponent {
   listeTrie = ["Nom", "Prenom", "Sexe", "Statut"];
   recherche: string = "";
 
-  constructor(private connexionService: ConnexionService, private serviceUtilisateur: UtilisateurService) {
+  constructor(public connexionService: ConnexionService, private serviceUtilisateur: UtilisateurService) {
   }
 
   ngOnInit() {

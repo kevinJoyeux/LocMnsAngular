@@ -1,0 +1,10 @@
+<form class="container" [formGroup]="formulaire" (ngSubmit)="onSubmit()">
+
+    <div class="form-outline mb-4">
+        <input type="email" id="form1Example13" placeholder="Adresse Email" formControlName="email"
+            class="form-control form-control-lg" />
+    </div>
+    <button type="submit" class="btn btn-primary btn-lg btn-block offset-9 col-3" id="loginButton">
+        Envoyer
+    </button>
+</form>
