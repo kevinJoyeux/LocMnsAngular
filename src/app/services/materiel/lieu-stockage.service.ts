@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { lieuStockage } from 'src/app/models/materiel/lieuStockage';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -11,18 +12,18 @@ export class LieuStockageService {
 
   constructor(private http: HttpClient) { }
   public getlieuStockages(): Observable<any> {
-    return this.http.get<lieuStockage>('http://localhost:8080/lieustockages');
+    return this.http.get<lieuStockage>(environment.serverUrl + "/lieustockages");
   }
 
   public deletelieuStockage(id: number): Observable<any> {
-    return this.http.delete("http://localhost:8080/lieustockage/" + id);
+    return this.http.delete(environment.serverUrl + "/lieustockage/" + id);
   }
 
   public editionlieuStockage(lieuStockage: any): Observable<any> {
-    return this.http.post("http://localhost:8080/lieustockage", lieuStockage);
+    return this.http.post(environment.serverUrl + "/lieustockage", lieuStockage);
   }
 
   public getlieuStockage(id: number): Observable<any> {
-    return this.http.get("http://localhost:8080/lieustockage/" + id);
+    return this.http.get(environment.serverUrl + "/lieustockage/" + id);
   }
 }
