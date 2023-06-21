@@ -44,8 +44,6 @@ export class MdpOublieComponent {
 
   onSubmit() {
     if (this.formulaire.valid) {
-      console.log(this.formulaire.get("email")?.value);
-
       this.serviceUtilisateur.getUtilisateursByEmail(this.formulaire.get("email")?.value).subscribe({
         next: listeutilisateur => {
 
@@ -68,7 +66,7 @@ export class MdpOublieComponent {
       })
 
     } else {
-      console.log("coucou");
+      console.log("formulaire non valide ");
 
     }
 

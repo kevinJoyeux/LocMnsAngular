@@ -64,7 +64,7 @@ export class ModeleComponent {
       })
       this.router.navigate(['/materiels'])
     } else {
-      console.log("eh bah non");
+      console.log("formulaire non valide ");
     }
   }
 }

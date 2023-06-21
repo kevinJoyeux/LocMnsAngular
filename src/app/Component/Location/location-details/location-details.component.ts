@@ -87,7 +87,6 @@ export class LocationDetailsComponent {
 
   onSubmit() {
 
-    console.log(this.formulaire.value);
 
     if (this.formulaire.valid) {
       this.serviceLocation.editionlocation(this.formulaire.value).subscribe(resultat => {
@@ -95,7 +94,7 @@ export class LocationDetailsComponent {
       })
       this.router.navigate(['/accueil'])
     } else {
-      console.log("eh bah non");
+      console.log("formulaire non valide");
 
     }
   }

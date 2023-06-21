@@ -58,7 +58,6 @@ export class UserDetailsComponent {
             .getUtilisateur(this.idUtilisateur)
             .subscribe({
               next: (utilisateur: utilisateur) => {
-                console.log(utilisateur);
                 this.formulaire.get("id")?.setValue(utilisateur.id);
                 this.formulaire.get("email")?.setValue(utilisateur.email)
                 this.formulaire.get("prenom")?.setValue(utilisateur.prenom)
@@ -92,8 +91,6 @@ export class UserDetailsComponent {
   Inserer() {
     const test = this.formulaire.get("motDePasse");
     const resultat = this.genereMotDePasse();
-    console.log(resultat);
-
     test?.setValue(resultat);
   }
 
@@ -103,8 +100,6 @@ export class UserDetailsComponent {
   }
 
   onSubmit() {
-    console.log(this.formulaire.value);
-
     if (this.formulaire.valid) {
       this.serviceUtilisateur.editionUtilisateur(this.formulaire.value).subscribe(resultat => {
         console.log(resultat);
@@ -112,7 +107,7 @@ export class UserDetailsComponent {
       this.router.navigate(['/utilisateurs'])
 
     } else {
-      console.log("eh bah non");
+      console.log("Formulaire non complet");
     }
   }
 }

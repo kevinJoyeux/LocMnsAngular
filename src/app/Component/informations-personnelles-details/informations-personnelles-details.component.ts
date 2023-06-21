@@ -56,7 +56,7 @@ export class InformationsPersonnellesDetailsComponent {
             .getUtilisateur(this.idUtilisateur)
             .subscribe({
               next: (utilisateur: utilisateur) => {
-                console.log(utilisateur);
+
                 this.formulaire.get("id")?.setValue(utilisateur.id);
                 this.formulaire.get("email")?.setValue(utilisateur.email)
                 this.formulaire.get("prenom")?.setValue(utilisateur.prenom)
@@ -85,7 +85,7 @@ export class InformationsPersonnellesDetailsComponent {
       this.router.navigate(['/informationsPersonnelles'])
 
     } else {
-      console.log("eh bah non");
+      console.log("formulaire non complet");
     }
   }
 }
