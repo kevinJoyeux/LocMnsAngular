@@ -46,7 +46,7 @@ export class UserDetailsComponent {
   ngOnInit() {
     this.serviceStatut.getStatuts().subscribe({
       next: listeStatut => this.listeStatut = listeStatut,
-      error: erreur => console.log(erreur)
+
     });
     this.route.params.subscribe(
       parametres => {
@@ -102,7 +102,7 @@ export class UserDetailsComponent {
   onSubmit() {
     if (this.formulaire.valid) {
       this.serviceUtilisateur.editionUtilisateur(this.formulaire.value).subscribe(resultat => {
-        console.log(resultat);
+
       })
       this.router.navigate(['/utilisateurs'])
 

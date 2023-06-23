@@ -48,7 +48,7 @@ export class LieuStockageComponent {
   onSubmit() {
     if (this.formulaire.valid) {
       this.Servicelieustockage.editionlieuStockage(this.formulaire.value).subscribe(resultat => {
-        console.log(resultat);
+
       })
       this.router.navigate(['/materiels'])
     } else {

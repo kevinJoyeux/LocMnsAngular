@@ -48,7 +48,6 @@ export class DemandeLocationComponent {
   ngOnInit() {
     this.serviceCategorie.getCategories().subscribe({
       next: listeCategorie => this.listeCategorie = listeCategorie,
-      error: erreur => console.log(erreur)
     });
   }
   compareCategorie(categorieOption: any, CategorieMateriel: any) {
@@ -67,7 +66,7 @@ export class DemandeLocationComponent {
           resultat = listeUtilisateur[0];
           this.formulaire.get("utilisateur")?.setValue(resultat);
           this.serviceLocation.editionlocation(this.formulaire.value).subscribe(resultat => {
-            console.log(resultat);
+
           })
         }
       });

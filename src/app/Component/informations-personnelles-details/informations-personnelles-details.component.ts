@@ -44,7 +44,7 @@ export class InformationsPersonnellesDetailsComponent {
   ngOnInit() {
     this.serviceStatut.getStatuts().subscribe({
       next: listeStatut => this.listeStatut = listeStatut,
-      error: erreur => console.log(erreur)
+
     });
     this.route.params.subscribe(
       parametres => {
@@ -80,7 +80,6 @@ export class InformationsPersonnellesDetailsComponent {
   onSubmit() {
     if (this.formulaire.valid) {
       this.serviceUtilisateur.editionUtilisateur(this.formulaire.value).subscribe(resultat => {
-        console.log(resultat);
       })
       this.router.navigate(['/informationsPersonnelles'])
 

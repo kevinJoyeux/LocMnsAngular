@@ -49,7 +49,7 @@ export class CategorieComponent {
   onSubmit() {
     if (this.formulaire.valid) {
       this.ServiceCategorie.editionCategorie(this.formulaire.value).subscribe(resultat => {
-        console.log(resultat);
+
       })
       this.router.navigate(['/materiels'])
     } else {

@@ -48,15 +48,15 @@ export class MaterielDetailsComponent {
   ngOnInit() {
     this.serviceCategorie.getCategories().subscribe({
       next: listeCategorie => this.listeCategorie = listeCategorie,
-      error: erreur => console.log(erreur)
+
     });
     this.serviceModele.getModeles().subscribe({
       next: listeModele => this.listeModele = listeModele,
-      error: erreur => console.log(erreur)
+
     });
     this.serviceLieuStockage.getlieuStockages().subscribe({
       next: listelieustockage => this.listeLieuStockage = listelieustockage,
-      error: erreur => console.log(erreur)
+
     });
     this.route.params.subscribe(
       parametres => {
@@ -97,11 +97,11 @@ export class MaterielDetailsComponent {
 
 
   onSubmit() {
-    console.log(this.formulaire.value);
+
 
     if (this.formulaire.valid) {
       this.serviceMateriel.ajoutMateriel(this.formulaire.value).subscribe(resultat => {
-        console.log(resultat);
+
       })
       this.router.navigate(['/materiels'])
     } else {

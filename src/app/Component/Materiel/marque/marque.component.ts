@@ -49,7 +49,7 @@ export class MarqueComponent {
   onSubmit() {
     if (this.formulaire.valid) {
       this.Servicemarque.editionMarque(this.formulaire.value).subscribe(resultat => {
-        console.log(resultat);
+
       })
       this.router.navigate(['/materiels'])
     } else {

@@ -45,7 +45,7 @@ export class LocationDetailsComponent {
   ngOnInit() {
     this.serviceCategorie.getCategories().subscribe({
       next: listeCategorie => this.listeCategorie = listeCategorie,
-      error: erreur => console.log(erreur)
+
     });
     this.route.params.subscribe(
       parametres => {
@@ -90,7 +90,7 @@ export class LocationDetailsComponent {
 
     if (this.formulaire.valid) {
       this.serviceLocation.editionlocation(this.formulaire.value).subscribe(resultat => {
-        console.log(resultat);
+
       })
       this.router.navigate(['/accueil'])
     } else {

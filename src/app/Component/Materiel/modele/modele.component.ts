@@ -33,7 +33,7 @@ export class ModeleComponent {
   ngOnInit() {
     this.serviceMarque.getMarques().subscribe({
       next: listeMarque => this.listeMarque = listeMarque,
-      error: erreur => console.log(erreur)
+
     });
     this.route.params.subscribe(
       parametres => {
@@ -56,11 +56,11 @@ export class ModeleComponent {
   }
 
   onSubmit() {
-    console.log(this.formulaire.value);
+
 
     if (this.formulaire.valid) {
       this.serviceModele.editionModele(this.formulaire.value).subscribe(resultat => {
-        console.log(resultat);
+
       })
       this.router.navigate(['/materiels'])
     } else {

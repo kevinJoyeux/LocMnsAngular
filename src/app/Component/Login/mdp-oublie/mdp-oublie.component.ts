@@ -44,29 +44,33 @@ export class MdpOublieComponent {
 
   onSubmit() {
     if (this.formulaire.valid) {
-      this.serviceUtilisateur.getUtilisateursByEmail(this.formulaire.get("email")?.value).subscribe({
-        next: listeutilisateur => {
+      if (this.serviceUtilisateur.getUtilisateursByEmail)
+        this.serviceUtilisateur.getUtilisateursByEmail(this.formulaire.get("email")?.value).subscribe({
+          next: listeutilisateur => {
+            if (!this.formulaire.get("id") && this.formulaire.get("id") != undefined) {
+              this.formulaire.get("motDePasse")?.setValue(this.genereMotDePasse());
 
-          this.formulaire.get("motDePasse")?.setValue(this.genereMotDePasse());
-          console.log(this.formulaire.get("motDePasse")?.value);
+              this.formulaire.get("id")?.setValue(listeutilisateur[0].id);
+              this.formulaire.get("email")?.setValue(listeutilisateur[0].email);
+              this.formulaire.get("prenom")?.setValue(listeutilisateur[0].prenom);
+              this.formulaire.get("nom")?.setValue(listeutilisateur[0].nom);
+              this.formulaire.get("login")?.setValue(listeutilisateur[0].login);
+              this.formulaire.get("sexe")?.setValue(listeutilisateur[0].sexe);
+              this.formulaire.get("affiliation")?.setValue(listeutilisateur[0].affiliation);
+              this.formulaire.get("portable")?.setValue(listeutilisateur[0].portable);
+              this.formulaire.get("statut")?.setValue(listeutilisateur[0].statut);
+              this.serviceUtilisateur.editionUtilisateur(this.formulaire.value).subscribe(resultat => {
 
-          this.formulaire.get("id")?.setValue(listeutilisateur[0].id);
-          this.formulaire.get("email")?.setValue(listeutilisateur[0].email);
-          this.formulaire.get("prenom")?.setValue(listeutilisateur[0].prenom);
-          this.formulaire.get("nom")?.setValue(listeutilisateur[0].nom);
-          this.formulaire.get("login")?.setValue(listeutilisateur[0].login);
-          this.formulaire.get("sexe")?.setValue(listeutilisateur[0].sexe);
-          this.formulaire.get("affiliation")?.setValue(listeutilisateur[0].affiliation);
-          this.formulaire.get("portable")?.setValue(listeutilisateur[0].portable);
-          this.formulaire.get("statut")?.setValue(listeutilisateur[0].statut);
-          this.serviceUtilisateur.editionUtilisateur(this.formulaire.value).subscribe(resultat => {
-            console.log(resultat);
-          })
-        }
-      })
+              })
+            } else {
+              console.log("adresse mail inexistante");
+
+            }
+          }
+        })
 
     } else {
-      console.log("formulaire non valide ");
+      console.log("formulaire non rempli");
 
     }
 
