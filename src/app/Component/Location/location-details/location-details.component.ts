@@ -67,7 +67,7 @@ export class LocationDetailsComponent {
                 });
                 this.formulaire.get("raisonLocation")?.setValue(location.raisonLocation);
                 this.formulaire.get("decision")?.setValue(location.decision);
-                //this.formulaire.get("categorie")?.setValue(location.)
+
               },
               error: erreurRequete => {
                 if (erreurRequete.status === 404) {

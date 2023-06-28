@@ -53,6 +53,8 @@ export class LocationEnAttenteComponent {
     this.ServiceLocation._location.subscribe(location => {
       this.listeLocation = location;
       location.forEach((element: location) => {
+        console.log(element.id);
+
         this.ServiceLocationMateriel.getLocationMateriel(element.id);
         this.ServiceLocationMateriel._locationmateriel.subscribe(locationmateriel => {
           this.listeLocationMateriel.push(locationmateriel);

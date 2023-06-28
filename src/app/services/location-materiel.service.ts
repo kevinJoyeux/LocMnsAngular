@@ -11,7 +11,7 @@ export class LocationMaterielService {
   constructor(private http: HttpClient) { }
   public getLocationMateriel(idloc: number | undefined) {
 
-    this.http.get(environment.serverUrl + 'locationmateriels/' + idloc).subscribe((locationmateriel: any) => this._locationmateriel.next(locationmateriel)
+    this.http.get(environment.serverUrl + '/locationmateriels/' + idloc).subscribe((locationmateriel: any) => this._locationmateriel.next(locationmateriel)
     );
 
   }
