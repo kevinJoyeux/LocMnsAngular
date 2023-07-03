@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { utilisateur } from '../models/utilisateur';
 import jwt_decode from 'jwt-decode';
-import { environment } from 'src/environments/environment.development';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -25,7 +25,7 @@ export class ConnexionService {
 
   connexion(utilisateur: utilisateur): Observable<string> {
     return this.http
-      .post(environment.serverUrl + '/connexion', utilisateur, {
+      .post(environment.ServerUrl + '/connexion', utilisateur, {
         responseType: 'text',
       })
   }

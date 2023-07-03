@@ -10,5 +10,4 @@ export interface utilisateur {
     affiliation: string;
     portable: string;
     motDePasse: string;
-
 }

@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { location } from '../models/location';
-import { environment } from 'src/environments/environment.development';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -13,53 +13,53 @@ export class LocationService {
 
   constructor(private http: HttpClient) { }
   public getlocations(): Observable<any> {
-    return this.http.get<location>(environment.serverUrl + '/location');
+    return this.http.get<location>(environment.ServerUrl + '/location');
   }
 
   public deletelocation(id: number): Observable<any> {
-    return this.http.delete(environment.serverUrl + '/location/' + id);
+    return this.http.delete(environment.ServerUrl + '/location/' + id);
   }
 
   public editionlocation(location: any): Observable<any> {
-    return this.http.post(environment.serverUrl + '/location', location);
+    return this.http.post(environment.ServerUrl + '/location', location);
   }
 
   public getlocation(id: number): Observable<any> {
-    return this.http.get(environment.serverUrl + '/location/' + id);
+    return this.http.get(environment.ServerUrl + '/location/' + id);
   }
   public getLocationValidee() {
-    this.http.get(environment.serverUrl + '/locationvalidee').subscribe((location: any) => this._location.next(location));
+    this.http.get(environment.ServerUrl + '/locationvalidee').subscribe((location: any) => this._location.next(location));
   }
   public getLocationAttente() {
-    this.http.get(environment.serverUrl + '/locationattente').subscribe((location: any) => this._location.next(location));
+    this.http.get(environment.ServerUrl + '/locationattente').subscribe((location: any) => this._location.next(location));
   }
   public getLocationOrderByDateDebutLocationPrevue() {
-    this.http.get(environment.serverUrl + '/locationDateDebutPrevue').subscribe((location: any) => this._location.next(location));
+    this.http.get(environment.ServerUrl + '/locationDateDebutPrevue').subscribe((location: any) => this._location.next(location));
   }
   public getLocationOrderByDateFinLocationPrevue() {
-    this.http.get(environment.serverUrl + '/locationDateFinPrevue').subscribe((location: any) => this._location.next(location));
+    this.http.get(environment.ServerUrl + '/locationDateFinPrevue').subscribe((location: any) => this._location.next(location));
   }
   public getLocationOrderByDateProlongation() {
-    this.http.get(environment.serverUrl + '/locationDateProlongation').subscribe((location: any) => this._location.next(location));
+    this.http.get(environment.ServerUrl + '/locationDateProlongation').subscribe((location: any) => this._location.next(location));
   }
   public getLocationOrderByDateDecision() {
-    this.http.get(environment.serverUrl + '/locationDateDecision').subscribe((location: any) => this._location.next(location));
+    this.http.get(environment.ServerUrl + '/locationDateDecision').subscribe((location: any) => this._location.next(location));
   }
   public getlocationUtilisateur() {
-    this.http.get(environment.serverUrl + '/utilisateurs')
+    this.http.get(environment.ServerUrl + '/utilisateurs')
       .subscribe((utilisateurs: any) => this._utilisateurs.next(utilisateurs));
   }
   public LocationValide(id: number | undefined): Observable<any> {
-    return this.http.get(environment.serverUrl + '/locationvalide/' + id);
+    return this.http.get(environment.ServerUrl + '/locationvalide/' + id);
   }
   public LocationRefusee(id: number | undefined): Observable<any> {
-    return this.http.get(environment.serverUrl + '/locationrefusee/' + id);
+    return this.http.get(environment.ServerUrl + '/locationrefusee/' + id);
   }
   public LocationUtilisateurtrue(id: number | undefined) {
-    this.http.get(environment.serverUrl + '/locationutilisateurtrue/' + id).subscribe((location: any) => this._location.next(location));
+    this.http.get(environment.ServerUrl + '/locationutilisateurtrue/' + id).subscribe((location: any) => this._location.next(location));
   }
   public LocationUtilisateurfalse(id: number | undefined) {
-    this.http.get(environment.serverUrl + '/locationutilisateurfalse/' + id).subscribe((location: any) => this._location.next(location));
+    this.http.get(environment.ServerUrl + '/locationutilisateurfalse/' + id).subscribe((location: any) => this._location.next(location));
   }
 }
 
