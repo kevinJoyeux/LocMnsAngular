@@ -42,10 +42,6 @@ export class ConnexionService {
         nom: donneesUtilisateur.utilisateur.nom,
         prenom: donneesUtilisateur.utilisateur.prenom,
         statut: donneesUtilisateur.utilisateur.statut,
-        login: donneesUtilisateur.utilisateur.login,
-        sexe: donneesUtilisateur.utilisateur.sexe,
-        affiliation: donneesUtilisateur.utilisateur.affiliation,
-        portable: donneesUtilisateur.utilisateur.portable,
         motDePasse: donneesUtilisateur.utilisateur.motDePasse,
       };
       this.isAdmin = utilisateur?.statut.nomStatut == "administrateur"

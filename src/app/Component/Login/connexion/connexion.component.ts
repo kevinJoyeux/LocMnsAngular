@@ -14,25 +14,26 @@ export class ConnexionComponent {
     motDePasse: ["", [Validators.required]]
   });
 
-    constructor(
-    private formBuilder: FormBuilder, 
-    private connexionService : ConnexionService,
-    private router: Router) {}
-  
+  constructor(
+    private formBuilder: FormBuilder,
+    private connexionService: ConnexionService,
+    private router: Router) { }
+
   erreurLogin: boolean = false;
 
-  onSubmit():void {
-    if(this.formulaire.valid){
+  onSubmit(): void {
+    if (this.formulaire.valid) {
       this.connexionService.connexion(this.formulaire.value)
-      .subscribe({
-        next : (jwt) => {
-        localStorage.setItem("jwt", jwt);
-        this.connexionService.updateUserConnected();
-        this.router.navigateByUrl("/accueil");
-      },
-      error : (erreur) => {
-        this.erreurLogin = true;
-      }});
+        .subscribe({
+          next: (jwt) => {
+            localStorage.setItem("jwt", jwt);
+            this.connexionService.updateUserConnected();
+            this.router.navigateByUrl("/accueil");
+          },
+          error: (erreur) => {
+            this.erreurLogin = true;
+          }
+        });
     }
   }
 }

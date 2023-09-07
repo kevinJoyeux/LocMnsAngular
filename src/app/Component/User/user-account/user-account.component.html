@@ -36,11 +36,9 @@
           </thead>
           <tbody>
             <tr *ngFor="let utilisateur of listeUtilisateur">
-              <td>{{ utilisateur.login }}</td>
               <td>{{ utilisateur.email }}</td>
               <td>{{ utilisateur.prenom }}</td>
               <td>{{ utilisateur.nom }}</td>
-              <td>{{ utilisateur.sexe }}</td>
               <td>{{ utilisateur.statut.nomStatut }}</td>
               <td>
                 <a routerLink="/utilisateur/details/{{ utilisateur.id }}" class="btn btn-outline-primary p-1 mx-1">

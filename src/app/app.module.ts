@@ -5,7 +5,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AccueilComponent } from './Component/accueil/accueil.component';
 import { ConnexionComponent } from './Component/Login/connexion/connexion.component';
-import { InformationsPersonnellesComponent } from './Component/informations-personnelles/informations-personnelles.component';
 import { UserAccountComponent } from './Component/User/user-account/user-account.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -21,19 +20,12 @@ import { JwtInterceptor } from './services/jwt.interceptor';
 import { MatMenuModule } from '@angular/material/menu';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { UserDetailsComponent } from './Component/User/user-details/user-details.component';
-import { MaterielComponent } from './Component/Materiel/materiel-liste/materiel.component';
-import { MaterielDetailsComponent } from './Component/Materiel/materiel-details/materiel-details.component';
-import { CategorieComponent } from './Component/Materiel/categorie/categorie.component';
-import { AffiliationComponent } from './Component/User/affiliation/affiliation.component';
-import { MarqueComponent } from './Component/Materiel/marque/marque.component';
-import { ModeleComponent } from './Component/Materiel/modele/modele.component';
-import { LieuStockageComponent } from './Component/Materiel/lieu-stockage/lieu-stockage.component';
-import { LocationEnAttenteComponent } from './Component/Location/location-en-attente/location-en-attente.component';
-import { LocationValideeComponent } from './Component/Location/location-validee/location-validee.component';
-import { LocationDetailsComponent } from './Component/Location/location-details/location-details.component';
-import { InformationsPersonnellesDetailsComponent } from './Component/informations-personnelles-details/informations-personnelles-details.component';
-import { DemandeLocationComponent } from './Component/Location/demande-location/demande-location.component';
 import { MdpOublieComponent } from './Component/Login/mdp-oublie/mdp-oublie.component';
+import { ContacterComponent } from './Component/contacter/contacter.component';
+import { AproposComponent } from './Component/apropos/apropos.component';
+import { EvenementComponent } from './Component/evenement/evenement.component';
+import { AjoutmembreComponent } from './Component/ajoutmembre/ajoutmembre.component';
+import { ListemembreComponent } from './Component/listemembre/listemembre.component';
 
 
 
@@ -42,22 +34,14 @@ import { MdpOublieComponent } from './Component/Login/mdp-oublie/mdp-oublie.comp
     AppComponent,
     ConnexionComponent,
     AccueilComponent,
-    InformationsPersonnellesComponent,
     UserAccountComponent,
     UserDetailsComponent,
-    MaterielComponent,
-    MaterielDetailsComponent,
-    CategorieComponent,
-    AffiliationComponent,
-    MarqueComponent,
-    ModeleComponent,
-    LieuStockageComponent,
-    LocationEnAttenteComponent,
-    LocationValideeComponent,
-    LocationDetailsComponent,
-    InformationsPersonnellesDetailsComponent,
-    DemandeLocationComponent,
-    MdpOublieComponent
+    MdpOublieComponent,
+    ContacterComponent,
+    AproposComponent,
+    EvenementComponent,
+    AjoutmembreComponent,
+    ListemembreComponent
   ],
   imports: [
     BrowserModule,

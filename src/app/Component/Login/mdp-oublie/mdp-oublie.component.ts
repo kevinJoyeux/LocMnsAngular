@@ -54,10 +54,6 @@ export class MdpOublieComponent {
               this.formulaire.get("email")?.setValue(listeutilisateur[0].email);
               this.formulaire.get("prenom")?.setValue(listeutilisateur[0].prenom);
               this.formulaire.get("nom")?.setValue(listeutilisateur[0].nom);
-              this.formulaire.get("login")?.setValue(listeutilisateur[0].login);
-              this.formulaire.get("sexe")?.setValue(listeutilisateur[0].sexe);
-              this.formulaire.get("affiliation")?.setValue(listeutilisateur[0].affiliation);
-              this.formulaire.get("portable")?.setValue(listeutilisateur[0].portable);
               this.formulaire.get("statut")?.setValue(listeutilisateur[0].statut);
               this.serviceUtilisateur.editionUtilisateur(this.formulaire.value).subscribe(resultat => {
 

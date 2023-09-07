@@ -1,16 +1,8 @@
 <div>
   <div class="col-8 offset-2 py-4 square">
-    <h2>Bienvenue sur Loc-MNS</h2>
-    <div class="col-10 offset-1 py-1">
-      <p id="text">
-        Première plateforme permettant la gestion de matériels de votre école
-        numérique. Après votre création de compte, vous pourrez faire des
-        demandes de réservations et même être alerté de
-        la disponibilité de matériels convoités.
-      </p>
-    </div>
+    <h2>Se connecter</h2>
     <div class="offset-3 col-6">
-      <form class="container" [formGroup]="formulaire" (ngSubmit)="onSubmit()">
+      <form class="container" (ngSubmit)="onSubmit()" [formGroup]="formulaire">
         <!-- Email input -->
         <div class="form-outline mb-4">
           <input type="email" id="form1Example13" placeholder="Adresse Email" formControlName="email"
@@ -33,8 +25,6 @@
           </div>
           <a routerLink="/mdpOublie">Mot de passe oublié ?</a>
         </div>
-
-        <mat-error *ngIf="erreurLogin">Mauvais login / mauvais password</mat-error>
 
         <!-- Submit button -->
         <button type="submit" class="btn btn-primary btn-lg btn-block offset-9 col-3" id="loginButton">

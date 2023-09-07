@@ -1,31 +1,25 @@
 import { HttpClient } from '@angular/common/http';
-import { Component } from '@angular/core';
+import { Component, ElementRef } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { utilisateur } from 'src/app/models/utilisateur';
-import { UtilisateurService } from 'src/app/services/utilisateur.service';
-import { StatutService } from 'src/app/services/statut.service';
-import { ElementRef } from '@angular/core';
 import { statut } from 'src/app/models/statut';
+import { utilisateur } from 'src/app/models/utilisateur';
+import { StatutService } from 'src/app/services/statut.service';
+import { UtilisateurService } from 'src/app/services/utilisateur.service';
 
 @Component({
-  selector: 'app-user-details',
-  templateUrl: './user-details.component.html',
-  styleUrls: ['./user-details.component.scss']
+  selector: 'app-ajoutmembre',
+  templateUrl: './ajoutmembre.component.html',
+  styleUrls: ['./ajoutmembre.component.scss']
 })
-export class UserDetailsComponent {
-
+export class AjoutmembreComponent {
   formulaire: FormGroup = this.formBuilder.group({
     id: [""],
     email: ["", [Validators.email, Validators.required]],
     prenom: ["", [Validators.required, Validators.minLength(3)]],
     nom: ["", [Validators.required, Validators.minLength(3)]],
-    login: ["", Validators.required],
-    sexe: ["", Validators.required],
-    affiliation: ["", Validators.required],
     statut: ["", Validators.required],
-    motDePasse: ["", Validators.required],
-    portable: ["", Validators.required]
+    motDePasse: ["", Validators.required]
   })
 
   constructor(

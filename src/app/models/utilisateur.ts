@@ -5,9 +5,5 @@ export interface utilisateur {
     nom: string;
     email: string;
     statut: statut;
-    login: string;
-    sexe: string;
-    affiliation: string;
-    portable: string;
     motDePasse: string;
 }

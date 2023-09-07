@@ -9,28 +9,32 @@ import { ConnexionService } from './services/connexion.service';
 })
 export class AppComponent {
 
-  utilisateurConnecte : utilisateur | null = null;
+  utilisateurConnecte: utilisateur | null = null;
+  isAdmin: boolean = false;
 
-  constructor(private connexionService : ConnexionService){}
+  constructor(private connexionService: ConnexionService) { }
 
-  ngOnInit(){
+  ngOnInit() {
     this.connexionService._utilisateurConnecte.subscribe(
-    (utilisateur) => (this.utilisateurConnecte = utilisateur)  
+      (utilisateur) => {
+        (this.utilisateurConnecte = utilisateur)
+        this.isAdmin = utilisateur?.statut.nomStatut == 'administrateur';
+      }
     );
   }
 
-  onDeconnexion(){
+  onDeconnexion() {
     this.connexionService.deconnexion();
   }
 
-// FONCTION POUR LE HAUT DE PAGE 
-  @HostListener("window:scroll", []) onWindowScroll(){
+  // FONCTION POUR LE HAUT DE PAGE 
+  @HostListener("window:scroll", []) onWindowScroll() {
     this.scrollFunction();
   }
 
   // when user scrolls down 20px from the top of the document, show the button
-  scrollFunction(){
-    if(document.body.scrollTop > 20 || document.documentElement.scrollTop > 20){
+  scrollFunction() {
+    if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
       document.getElementById('myBtn')!.style.display = "block";
     } else {
       document.getElementById('myBtn')!.style.display = "none";
@@ -38,13 +42,13 @@ export class AppComponent {
   }
 
   // when user clicls on the button, scroll to the top of the document 
-  topFunction(){
+  topFunction() {
     document.body.scrollTop = 0; // for safari
     document.documentElement.scrollTop = 0; // for chrome, firefox, IE, and Opera 
   }
 
-  isConnected(){
+  isConnected() {
     return this.utilisateurConnecte != null;
   }
-  
+
 }

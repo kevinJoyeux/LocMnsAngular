@@ -1,14 +1,38 @@
-.mat-icon {
-    vertical-align: middle;
+.carousel {
+    position: relative;
+    max-width: 800px;
+    margin: 0 auto;
 }
 
-button {
-    border-radius: 5px;
-    width: 35%;
-    height: 50%;
-    display: inline-block;
+.slides {
+    display: flex;
 }
 
-div {
-    padding: 2%;
+img {
+    width: 25%;
+    height: auto;
+    display: none;
+}
+
+img.active {
+    display: block;
+    margin: 0 auto;
+}
+
+.prev,
+.next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    padding: 10px;
+    font-size: 20px;
+}
+
+.prev {
+    left: 0;
+}
+
+.next {
+    right: 0;
 }

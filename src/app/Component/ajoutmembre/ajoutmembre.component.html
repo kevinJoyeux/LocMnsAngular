@@ -1,0 +1,55 @@
+<html>
+
+<body>
+    <div class="container">
+        <h1>
+            {{ isCreation ? "Ajouter un utilisateur" : "Modifier l'utilisateur" }}
+        </h1>
+        <form class="p-5 ng-valid ng-dirty ng-touched" [formGroup]="formulaire" id="formulaire">
+            <label for="prenom" class="col-md-2 col-form-label">Prénom</label>
+            <div class="col-md-4">
+                <input type="text" formControlName="prenom" id="prenom" placeholder="Prénom"
+                    class="form-control ng-untouched ng-pristine ng-valid" required minlength="3" />
+            </div>
+            <label for="nom" class="col-md-2 col-form-label">Nom</label>
+            <div class="col-md-4">
+                <input type="text" formControlName="nom" id="nom" placeholder="Nom"
+                    class="form-control ng-untouched ng-pristine ng-valid" required minlength="3" />
+            </div>
+            <label for="statut" class="col-md-2 col-form-label">Statut</label>
+            <div>
+                <select id="statut" class="form-control ng-untouched ng-pristine ng-valid" required
+                    formControlName="statut" [compareWith]="compareStatut">
+                    <option value="" disabled selected hidden>
+                        --- Sélection du statut ---
+                    </option>
+                    <option *ngFor="let statut of listeStatut" [ngValue]="statut">
+                        {{statut.nomStatut}}
+                    </option>
+                </select>
+            </div>
+            <label for="email" class="col-md-2 col-form-label">Email</label>
+            <div class="col-md-4">
+                <input type="text" formControlName="email" id="email" placeholder="Email"
+                    class="form-control ng-untouched ng-pristine ng-valid" required />
+            </div>
+            <label for="motDePasse" class="col-md-2 col-form-label">Mot de passe</label>
+            <div class="col-md-4">
+                <input type="text" formControlName="motDePasse" id="motDePasse" placeholder="Mot De Passe" readonly
+                    class="form-control ng-untouched ng-pristine ng-valid" required />
+            </div>
+            <div>
+                <button>Générer</button>
+            </div>
+
+            <div class="action-buttons d-flex justify-content-end pt-5">
+                <a routerLink="/listemembre" class="m-1 btn btn-outline-primary btn-block">Retour</a>
+                <button (click)="onSubmit()" class="m-1 btn btn-primary btn-block">
+                    Sauvegarder
+                </button>
+            </div>
+        </form>
+    </div>
+</body>
+
+</html>

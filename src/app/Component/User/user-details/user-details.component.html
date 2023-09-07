@@ -7,12 +7,12 @@
     </h1>
     <form class="p-5 ng-valid ng-dirty ng-touched" [formGroup]="formulaire" id="formulaire">
       <div class="form-group row pt-4">
-        <label for="firstName" class="col-md-2 col-form-label">Prénom</label>
+        <label for="prenom" class="col-md-2 col-form-label">Prénom</label>
         <div class="col-md-4">
           <input type="text" formControlName="prenom" id="prenom" placeholder="Prénom"
             class="form-control ng-untouched ng-pristine ng-valid" required minlength="3" />
         </div>
-        <label for="lastName" class="col-md-2 col-form-label">Nom</label>
+        <label for="nom" class="col-md-2 col-form-label">Nom</label>
         <div class="col-md-4">
           <input type="text" formControlName="nom" id="nom" placeholder="Nom"
             class="form-control ng-untouched ng-pristine ng-valid" required minlength="3" />
@@ -70,6 +70,9 @@
         <div class="col-md-4">
           <select id="statut" class="form-control ng-untouched ng-pristine ng-valid" required formControlName="statut"
             [compareWith]="compareStatut">
+            <option value="" disabled selected hidden>
+              --- Sélection du statut ---
+            </option>
             <option *ngFor="let statut of listeStatut" [ngValue]="statut">
               {{statut.nomStatut}}
             </option>
@@ -80,11 +83,11 @@
       <div class="form-group row pt-4">
         <label for="motDePasse" class="col-md-2 col-form-label">Mot de passe</label>
         <div class="col-md-4">
-          <input type="text" formControlName="motDePasse" id="motDePasse" placeholder="Password"
+          <input type="text" formControlName="motDePasse" id="motDePasse" placeholder="Mot De Passe" readonly
             class="form-control ng-untouched ng-pristine ng-valid" required />
         </div>
         <div>
-          <button (click)="Inserer()">Générer</button>
+          <button>Générer</button>
         </div>
       </div>
 

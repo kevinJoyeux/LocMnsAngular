@@ -1,35 +1,7 @@
-<div class="container">
-  <div class="d-flex justify-content-center align-items-center">
-    <button type="button" class="btn btn-primary offset-1 col-4" [routerLink]="['/utilisateurs']"
-      *ngIf="this.connexionService.isAdmin">
-      <mat-icon>person_add</mat-icon>
-      Compte utilisateur
-    </button>
-
-    <button type="button" class="btn btn-primary offset-1 col-4" [routerLink]="['/materiels']">
-      <mat-icon>add_to_photos</mat-icon>
-      Matériel
-    </button>
+<div class="carousel">
+  <div class="slides">
+    <img *ngFor="let image of images" [src]="image.src" [class.active]="image === currentImage">
   </div>
-  <div class="d-flex justify-content-center align-items-center">
-    <button type="button" class="btn btn-primary offset-1 col-4" routerLink="/location-attente">
-      <mat-icon>pending</mat-icon>
-      En attente de validation
-    </button>
-    <button type="button" class="btn btn-primary offset-1 col-4" routerLink="/location-validee">
-      <mat-icon>done_all</mat-icon>
-      Location en cours
-    </button>
-  </div>
-  <div class="d-flex justify-content-center align-items-center">
-    <button type="button" class="btn btn-primary offset-1 col-4" routerLink="/location/nouveau">
-      <mat-icon>book_online</mat-icon>
-      Réservation
-    </button>
-
-    <button type="button" class="btn btn-primary offset-1 col-4" [routerLink]="['/informationsPersonnelles']">
-      <mat-icon>settings_accessibility</mat-icon>
-      Mes informations
-    </button>
-  </div>
+  <a class="prev" (click)="prevSlide()">&#10094;</a>
+  <a class="next" (click)="nextSlide()">&#10095;</a>
 </div>
